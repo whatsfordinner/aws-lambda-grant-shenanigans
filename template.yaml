@@ -1,0 +1,47 @@
+Resources:
+  Role:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument: |
+        {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              },
+              "Action": "sts:AssumeRole"
+            }
+          ]
+        }
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+      RoleName: grant-shenanigans
+  Function:
+    Type: AWS::Lambda::Function
+    Properties:
+      Code:
+        ZipFile: |
+          def handler(event, context):
+              pass
+      Description: Dummy function used to test grant management
+      Environment:
+        Variables:
+          foo: bar
+      FunctionName: grant-shenanigans
+      Handler: index.handler
+      Runtime: python3.9
+      Role: !GetAtt Role.Arn
+  LogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Join
+                      - /
+                      - - /aws/lambda
+                        - !Ref Function
+      RetentionInDays: 1
+Outputs:
+  FunctionName:
+    Description: The name of the lambda to use with "aws lambda invoke"
+    Value: !Ref Function
