@@ -462,6 +462,8 @@ $ aws cloudformation create-stack \
   --stack-name grant-shenanigans
 ```
 
+Depending on your setup, this is going to be more or less involved. E.g. if you have datastores or other stateful resources in your stack then you're going to want to do a targeted delete and recreate of just the function rather than just blowing away the whole stack. Deleting and recreating the stack is just for the purposes of this demo.
+
 Then try to invoke the lambda:
 
 ```
