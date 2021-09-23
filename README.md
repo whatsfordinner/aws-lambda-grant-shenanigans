@@ -368,8 +368,8 @@ Now we can see an error:
 That key ID is familiar, but let's double check
 
 ```
-aws kms describe-key \
---key-id 5c466b7d-7ad6-4c88-9fe6-bb787707c55a
+$ aws kms describe-key \
+  --key-id 5c466b7d-7ad6-4c88-9fe6-bb787707c55a
 ```
 
 ```json
@@ -426,7 +426,7 @@ $ aws kms list-grants \
 ]
 ```
 
-The `GranteePrincipal` and `RetiringPrincipal` no longer use the ARN of the role, instead they use the unique IS for the role that was generated when it was first created. If you look at the output JSON from when we recreated the role you can see the `RoleID` attribute and see that it's different. That's why the grant no longer applies.
+The `GranteePrincipal` and `RetiringPrincipal` no longer use the ARN of the role, instead they use the unique ID for the role that was generated when it was first created. If you look at the output JSON from when we recreated the role you can see the `RoleID` attribute and see that it's different. That's why the grant no longer applies.
 
 Let's recreate that grant:
 
