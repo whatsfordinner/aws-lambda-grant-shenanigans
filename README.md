@@ -172,8 +172,8 @@ There's a lot of reasons that an IAM role might get deleted unintentionally. By 
 ```
 $ aws iam detach-role-policy \
   --role-name grant-shenanigans \
-  --policy-arn arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
-$ aws iam delete-role --role-name grant-shenanigans
+  --policy-arn arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole \
+  && aws iam delete-role --role-name grant-shenanigans
 ```
 
 ## Recreating the Role
@@ -432,10 +432,10 @@ Let's recreate that grant:
 
 ```
 $ aws kms create-grant \
-> --key-id 5c466b7d-7ad6-4c88-9fe6-bb787707c55a \
-> --grantee-principal arn:aws:iam::123456789012:role/grant-shenanigans \
-> --retiring-principal arn:aws:iam::123456789012:role/grant-shenanigans \
-> --operations Decrypt RetireGrant 
+  --key-id 5c466b7d-7ad6-4c88-9fe6-bb787707c55a \
+  --grantee-principal arn:aws:iam::123456789012:role/grant-shenanigans \
+  --retiring-principal arn:aws:iam::123456789012:role/grant-shenanigans \
+  --operations Decrypt RetireGrant 
 
 An error occurred (AccessDeniedException) when calling the CreateGrant operation: User: arn:aws:sts::123456789012:assumed-role/admin-role/botocore-session-1632399481 is not authorized to perform: kms:CreateGrant on resource: arn:aws:kms:ap-southeast-2:123456789012:key/5c466b7d-7ad6-4c88-9fe6-bb787707c55a
 
