@@ -447,7 +447,7 @@ Oh. That's because we aren't allowed to manage grants on [AWS Managed Keys](http
 
 ## Fixing It
 
-At this point, you can fix the function either by changing the execution role or recreating the function. I would opt for recreating the function because the lambda is as broken as it gets, anyway.
+At this point, you can fix the function either by changing the execution role back and forth or recreating the function. I would opt for recreating the function because the lambda is as broken as it gets, anyway.
 
 ```
 $ aws cloudformation delete-stack \
