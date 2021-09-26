@@ -61,7 +61,7 @@ And now check the grants. This can only be done via the CLI or API:
 ```
 $ aws kms list-grants \
   --key-id 5c466b7d-7ad6-4c88-9fe6-bb787707c55a \
-  --query "Grants[?Name=='grant-shenanigans']
+  --query "Grants[?Name=='grant-shenanigans']"
 ```
 
 ```json
@@ -400,7 +400,7 @@ As expected, it's the Amazon managed key for Lambda! Let's have a look at that g
 ```
 $ aws kms list-grants \
   --key-id 5c466b7d-7ad6-4c88-9fe6-bb787707c55a \
-  --query "Grants[?Name=='grant-shenanigans']
+  --query "Grants[?Name=='grant-shenanigans']"
 ```
 
 ```json
