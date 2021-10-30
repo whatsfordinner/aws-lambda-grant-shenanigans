@@ -232,7 +232,7 @@ Now, drift detection shows that everything is as expected. By all accounts, we'v
 
 ![A screenshow of the AWS CloudFormation console showing the drift status of the example role. All resources are in sync.](img/drift4.png)
 
-Let's try invoking the lambda again!
+Let's try invoking the lambda again! Bear in mind that if you're racing through this the function might still be warm, so you'll need to wait for a cold start.
 
 ```
 $ aws lambda invoke \
